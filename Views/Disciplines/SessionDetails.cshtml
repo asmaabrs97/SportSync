@@ -1,0 +1,251 @@
+@{
+    ViewData["Title"] = $"{ViewData["Session"]} - {ViewData["Discipline"]}";
+}
+
+<div class="session-details">
+    <!-- Hero Section -->
+    <div class="hero-section" style="background-image: url('/images/sports/ski-hero.jpg');">
+        <div class="hero-content">
+            <h1 class="session-title">@ViewData["Session"]</h1>
+            <div class="session-info">
+                <div class="info-item">
+                    <span class="label">Start Date:</span>
+                    <span class="value">January 8, 2025</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">End Date:</span>
+                    <span class="value">March 29, 2025</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Available Spots:</span>
+                    <span class="value">10</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Location:</span>
+                    <span class="value">SPORT Ski Resort</span>
+                </div>
+            </div>
+            <div class="price-tag">365€/S</div>
+            <a href="#" class="sign-up-btn">SIGN UP SESSION</a>
+        </div>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="details-grid">
+        <div class="details-section">
+            <h2>What's Included</h2>
+            <ul>
+                <li>Professional instruction</li>
+                <li>Equipment rental (skis, boots, poles)</li>
+                <li>Transportation to and from the resort</li>
+            </ul>
+        </div>
+
+        <div class="details-section">
+            <h2>Safety Measures</h2>
+            <ul>
+                <li>Certified instructors</li>
+                <li>Regular equipment checks</li>
+            </ul>
+        </div>
+
+        <div class="details-section">
+            <h2>Skill Levels</h2>
+            <ul>
+                <li>Beginner</li>
+                <li>Intermediate</li>
+                <li>Advanced</li>
+            </ul>
+        </div>
+
+        <div class="details-section">
+            <h2>Additional Information</h2>
+            <ul>
+                <li>Minimum age: 7 years</li>
+                <li>Maximum group size: 10 per instructor</li>
+                <li>Ability to reschedule sessions</li>
+            </ul>
+        </div>
+
+        <div class="details-section">
+            <h2>What to Bring</h2>
+            <ul>
+                <li>Warm, waterproof clothing</li>
+                <li>Gloves and hat</li>
+                <li>Sunglasses</li>
+                <li>Sunscreen</li>
+            </ul>
+        </div>
+
+        <div class="details-section contact">
+            <h2>Questions?</h2>
+            <div class="contact-us">
+                <span>contact us</span>
+                <div class="social-links">
+                    <a href="#" class="social-icon facebook"><img src="/images/social/facebook.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon instagram"><img src="/images/social/instagram.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon tiktok"><img src="/images/social/tiktok.png" alt="TikTok"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .session-details {
+        background-color: #1a1a1a;
+        color: white;
+        min-height: 100vh;
+    }
+
+    .hero-section {
+        height: 80vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .session-title {
+        font-size: 3.5rem;
+        color: #fff;
+        margin-bottom: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .session-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .info-item {
+        text-align: left;
+    }
+
+    .label {
+        color: #e85d04;
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .value {
+        font-size: 1.1rem;
+    }
+
+    .price-tag {
+        font-size: 2rem;
+        color: #e85d04;
+        margin: 2rem 0;
+        font-weight: bold;
+    }
+
+    .sign-up-btn {
+        display: inline-block;
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+        background-color: #e85d04;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transition: background-color 0.3s;
+    }
+
+    .sign-up-btn:hover {
+        background-color: #dc2f02;
+        color: white;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .details-section {
+        background-color: #2b2b2b;
+        padding: 2rem;
+        border-radius: 10px;
+    }
+
+    .details-section h2 {
+        color: #e85d04;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .details-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .details-section li {
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+
+    .details-section li:before {
+        content: "•";
+        color: #e85d04;
+        position: absolute;
+        left: 0;
+    }
+
+    .contact-us {
+        text-align: center;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icon img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s;
+    }
+
+    .social-icon:hover img {
+        transform: scale(1.2);
+    }
+
+    @@media (max-width: 768px) {
+        .session-title {
+            font-size: 2.5rem;
+        }
+
+        .session-info {
+            grid-template-columns: 1fr;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-content {
+            padding: 1rem;
+        }
+    }
+</style>

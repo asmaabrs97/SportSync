@@ -1,0 +1,204 @@
+@{
+    ViewData["Title"] = "Ski Alpin";
+}
+
+<div class="discipline-detail">
+    <!-- Hero Section -->
+    <div class="hero-section" style="background-image: url('/images/sports/ski.jpg');">
+        <div class="hero-content">
+            <h1 class="discipline-title">SKI ALPIN</h1>
+            <p class="discipline-description">
+                Alpine skiing, also known as downhill skiing, is a winter sport where skiers descend snow-covered slopes using skis. They control their speed and direction with poles and boots attached to the skis. This sport requires a mix of skill and precision to navigate trails of varying difficulty levels.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary sign-up-btn">SIGN UP</a>
+                <a href="#" class="btn btn-primary sign-up-btn">SIGN UP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skill Levels Section -->
+    <div class="skill-levels">
+        <div class="level-card beginner">
+            <h3>BEGINNER</h3>
+            <p>Perfect for first-timers. Learn basic techniques, balance, and safety on gentle slopes. No prior experience needed.</p>
+        </div>
+        <div class="level-card intermediate">
+            <h3>INTERMEDIATE</h3>
+            <p>For those who can handle blue runs. Improve your technique, speed control, and confidence on varied terrain.</p>
+        </div>
+        <div class="level-card advanced">
+            <h3>ADVANCED</h3>
+            <p>Designed for experienced skiers. Master challenging slopes, off-piste techniques, and advanced skills.</p>
+        </div>
+    </div>
+
+    <!-- Upcoming Sessions Section -->
+    <div class="upcoming-sessions">
+        <h2>UPCOMING SESSIONS</h2>
+        <p class="pricing">Prices starting from €365 per session</p>
+        
+        <div class="sessions-grid">
+            <a href="@Url.Action("SessionDetails", "Disciplines", new { discipline = "SkiAlpin", session = "Alpes d'Huez" })" class="session-card">
+                <h3>Alpes d'Huez</h3>
+                <p>Winter Session: Dec 15, 2024 - Mar 15, 2025</p>
+            </a>
+            <a href="@Url.Action("SessionDetails", "Disciplines", new { discipline = "SkiAlpin", session = "Val Thorens" })" class="session-card">
+                <h3>Val Thorens</h3>
+                <p>Spring Session: Mar 20, 2025 - Apr 30, 2025</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-links">
+        <a href="#" class="social-icon facebook"><img src="/images/social/facebook.png" alt="Facebook"></a>
+        <a href="#" class="social-icon instagram"><img src="/images/social/instagram.png" alt="Instagram"></a>
+        <a href="#" class="social-icon tiktok"><img src="/images/social/twitter.png" alt="Twitter"></a>
+    </div>
+</div>
+
+<style>
+    .discipline-detail {
+        background-color: #1a1a1a;
+        color: white;
+        min-height: 100vh;
+    }
+
+    .hero-section {
+        height: 80vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+    }
+
+    .discipline-title {
+        font-size: 4rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+
+    .discipline-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .sign-up-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.2rem;
+        background-color: #e85d04;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transition: background-color 0.3s;
+    }
+
+    .sign-up-btn:hover {
+        background-color: #dc2f02;
+    }
+
+    .skill-levels {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 4rem 2rem;
+        background-color: #1a1a1a;
+    }
+
+    .level-card {
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .level-card h3 {
+        color: #e85d04;
+        margin-bottom: 1rem;
+    }
+
+    .beginner { background-color: #2b2b2b; }
+    .intermediate { background-color: #2b2b2b; }
+    .advanced { background-color: #2b2b2b; }
+
+    .upcoming-sessions {
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .pricing {
+        color: #e85d04;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .sessions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .session-card {
+        background-color: #2b2b2b;
+        padding: 2rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+
+    .session-card:hover {
+        transform: scale(1.05);
+        color: white;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+    }
+
+    .social-icon img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s;
+    }
+
+    .social-icon:hover img {
+        transform: scale(1.2);
+    }
+
+    @@media only screen and (max-width: 768px) {
+        .skill-levels {
+            grid-template-columns: 1fr;
+        }
+
+        .discipline-title {
+            font-size: 3rem;
+        }
+
+        .hero-content {
+            padding: 1rem;
+        }
+    }
+</style>
