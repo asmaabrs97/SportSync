@@ -37,21 +37,34 @@
 
         .footer {
             background-color: #1a1a1a;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             position: fixed;
             bottom: 0;
             width: 100%;
+            font-size: 0.8rem;
         }
 
         .social-links {
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            gap: 0.5rem;
         }
 
         .social-links img {
-            height: 24px;
-            margin: 0 0.5rem;
+            height: 16px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .social-links img:hover {
+            opacity: 1;
+        }
+
+        .social-text {
+            color: #888;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
         }
     </style>
 </head>
@@ -98,7 +111,7 @@
     <footer class="footer text-light">
         <div class="container">
             <div class="social-links">
-                FOLLOW US ON
+                <span class="social-text">FOLLOW US ON</span>
                 <a href="#" class="ms-2"><img src="~/images/social/facebook.png" alt="Facebook" /></a>
                 <a href="#"><img src="~/images/social/instagram.png" alt="Instagram" /></a>
                 <a href="#"><img src="~/images/social/twitter.png" alt="Twitter" /></a>

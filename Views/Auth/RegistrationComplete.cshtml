@@ -1,0 +1,128 @@
+@{
+    ViewData["Title"] = "Registration Complete";
+}
+
+<div class="auth-container">
+    <div class="auth-form">
+        <div class="success-icon">✓</div>
+        <h1>WELCOME TO SPORTSYNC!</h1>
+        <p class="message">Your registration is complete. You can now access all features of SportSync.</p>
+        
+        <div class="next-steps">
+            <h2>Next Steps:</h2>
+            <ul>
+                <li>Explore available sports sessions</li>
+                <li>Complete your profile</li>
+                <li>Join a sports community</li>
+            </ul>
+        </div>
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">GO TO DASHBOARD</a>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        min-height: 100vh;
+        background-color: #1a1a1a;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect width="100%" height="100%" fill="%231a1a1a"/><circle cx="10" cy="10" r="1" fill="%234a90e2" opacity="0.3"/></svg>');
+        background-size: 20px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        color: white;
+    }
+
+    .auth-form {
+        background: rgba(40, 40, 40, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    .success-icon {
+        font-size: 4rem;
+        color: #4CAF50;
+        margin-bottom: 1rem;
+        animation: scaleIn 0.5s ease-out;
+    }
+
+    @@keyframes scaleIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .auth-form h1 {
+        color: #e85d04;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .message {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #cccccc;
+    }
+
+    .next-steps {
+        text-align: left;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+    .next-steps h2 {
+        color: #e85d04;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .next-steps ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .next-steps li {
+        margin: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .next-steps li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #e85d04;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        text-decoration: none;
+        background-color: #e85d04;
+        border: none;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #dc2f02;
+        text-decoration: none;
+        color: white;
+    }
+</style>

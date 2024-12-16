@@ -1,0 +1,174 @@
+@model SportSync.Models.ViewModels.DocumentsViewModel
+@{
+    ViewData["Title"] = "Required Documents";
+}
+
+<div class="auth-container">
+    <div class="auth-form">
+        <h1>DOCUMENTS</h1>
+        <p class="subtitle">Please upload the following documents:</p>
+        
+        <form asp-action="Documents" asp-controller="Auth" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="ProofOfIdentity">Proof of Identity:</label>
+                <div class="file-upload">
+                    <input asp-for="ProofOfIdentity" type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required />
+                    <small class="text-muted">(Passport or ID card)</small>
+                </div>
+                <span asp-validation-for="ProofOfIdentity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MedicalCertificate">Medical Certificate:</label>
+                <div class="file-upload">
+                    <input asp-for="MedicalCertificate" type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required />
+                    <small class="text-muted">(dated within last 3 months)</small>
+                </div>
+                <span asp-validation-for="MedicalCertificate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="InsuranceCertificate">Insurance Certificate:</label>
+                <div class="file-upload">
+                    <input asp-for="InsuranceCertificate" type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" />
+                </div>
+                <span asp-validation-for="InsuranceCertificate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LiabilityWaiverForm">Liability Waiver Form:</label>
+                <div class="file-upload">
+                    <input asp-for="LiabilityWaiverForm" type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required />
+                    <a href="#" class="download-link">Download form template</a>
+                </div>
+                <span asp-validation-for="LiabilityWaiverForm" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">FINALIZE</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        min-height: 100vh;
+        background-color: #1a1a1a;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect width="100%" height="100%" fill="%231a1a1a"/><circle cx="10" cy="10" r="1" fill="%234a90e2" opacity="0.3"/></svg>');
+        background-size: 20px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        color: white;
+    }
+
+    .auth-form {
+        background: rgba(40, 40, 40, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .auth-form h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #e85d04;
+        font-weight: bold;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #cccccc;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .file-upload {
+        position: relative;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.75rem;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: #e85d04;
+        outline: none;
+    }
+
+    input[type="file"] {
+        color: transparent;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    input[type="file"]::before {
+        content: 'Choose File';
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        outline: none;
+        white-space: nowrap;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+    }
+
+    .text-muted {
+        color: #999;
+        font-size: 0.875rem;
+        margin-left: 1rem;
+    }
+
+    .download-link {
+        color: #e85d04;
+        text-decoration: none;
+        font-size: 0.875rem;
+        margin-left: 1rem;
+    }
+
+    .download-link:hover {
+        text-decoration: underline;
+    }
+
+    .btn-primary {
+        background-color: #e85d04;
+        border: none;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #dc2f02;
+    }
+
+    .text-danger {
+        color: #ff4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
