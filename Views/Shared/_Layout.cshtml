@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SportSync</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SportSync.styles.css" asp-append-version="true" />
+    <style>
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+        }
+
+        .search-box {
+            max-width: 300px;
+            margin: 0 1rem;
+        }
+
+        .search-box input {
+            background-color: #333;
+            border: none;
+            color: white;
+        }
+
+        .nav-link {
+            color: white !important;
+            margin: 0 0.5rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .social-links img {
+            height: 24px;
+            margin: 0 0.5rem;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" alt="SportSync" height="40" />
+                </a>
+                <div class="search-box d-none d-sm-block">
+                    <input type="text" class="form-control" placeholder="Search..." />
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Disciplines">DISCIPLINES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TEAMS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">EVENTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Register">SIGN UP</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer text-light">
+        <div class="container">
+            <div class="social-links">
+                FOLLOW US ON
+                <a href="#" class="ms-2"><img src="~/images/social/facebook.png" alt="Facebook" /></a>
+                <a href="#"><img src="~/images/social/instagram.png" alt="Instagram" /></a>
+                <a href="#"><img src="~/images/social/twitter.png" alt="Twitter" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

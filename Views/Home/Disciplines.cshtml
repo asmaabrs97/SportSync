@@ -1,0 +1,152 @@
+@{
+    ViewData["Title"] = "Disciplines";
+}
+
+<div class="disciplines-page">
+    <h1 class="text-center mb-4">DISCIPLINES</h1>
+    <p class="text-center subtitle">choose between...</p>
+
+    <div class="filters mb-4">
+        <select class="form-select" id="sportType">
+            <option selected>Sport Type</option>
+            <option>Individual</option>
+            <option>Team</option>
+        </select>
+
+        <select class="form-select" id="sportLevel">
+            <option selected>Sport Level</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+        </select>
+
+        <select class="form-select" id="skillLevel">
+            <option selected>Skill Level</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+        </select>
+    </div>
+
+    <div class="sports-grid">
+        <div class="sport-card" onclick="location.href='/sport/football'">
+            <img src="~/images/sports/football.jpg" alt="Football">
+            <span>FOOTBALL</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/basketball'">
+            <img src="~/images/sports/basketball.jpg" alt="Basketball">
+            <span>BASKETBALL</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/handball'">
+            <img src="~/images/sports/handball.jpg" alt="Handball">
+            <span>HANDBALL</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/ski-alpin'">
+            <img src="~/images/sports/ski.jpg" alt="Ski Alpin">
+            <span>SKI ALPIN</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/volleyball'">
+            <img src="~/images/sports/volleyball.jpg" alt="Volleyball">
+            <span>VOLLEYBALL</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/baseball'">
+            <img src="~/images/sports/baseball.jpg" alt="Baseball">
+            <span>BASEBALL</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/cricket'">
+            <img src="~/images/sports/cricket.jpg" alt="Cricket">
+            <span>CRICKET</span>
+        </div>
+        <div class="sport-card" onclick="location.href='/sport/water-polo'">
+            <img src="~/images/sports/waterpolo.jpg" alt="Water Polo">
+            <span>WATER POLO</span>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary">LEARN MORE ABOUT EACH OPTION</a>
+    </div>
+</div>
+
+<style>
+.disciplines-page {
+    padding: 2rem;
+    background-color: #1a1a1a;
+    color: white;
+    min-height: 100vh;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-select {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.sport-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sport-card:hover {
+    transform: scale(1.05);
+}
+
+.sport-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.sport-card span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,123,255,0.5);
+}
+</style>
