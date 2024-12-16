@@ -1,106 +1,106 @@
-# SportSync - Sports Management Application
+# SportSync - Application de Gestion Sportive
 
-SportSync is a modern web application built with ASP.NET Core that helps manage sports activities, registrations, and user sessions. It provides a seamless experience for both athletes and administrators.
+SportSync est une application web moderne construite avec ASP.NET Core qui aide à gérer les activités sportives, les inscriptions et les sessions utilisateurs. Elle offre une expérience fluide tant pour les athlètes que pour les administrateurs.
 
-## Features
+## Fonctionnalités
 
-- **User Authentication**
-  - Secure login and registration system
-  - User profile management
-  - Role-based access control (Admin, Coach, User)
+- **Authentification Utilisateur**
+  - Système sécurisé de connexion et d'inscription
+  - Gestion des profils utilisateurs
+  - Contrôle d'accès basé sur les rôles (Administrateur, Entraîneur, Utilisateur)
 
-- **Sports Management**
-  - Browse different sports disciplines
-  - View detailed information about each sport
-  - Filter sports by type, level, and skill requirements
+- **Gestion des Sports**
+  - Parcourir différentes disciplines sportives
+  - Voir les informations détaillées de chaque sport
+  - Filtrer les sports par type, niveau et exigences techniques
 
-- **Session Management**
-  - Schedule and manage training sessions
-  - Track attendance
-  - Manage registrations
+- **Gestion des Sessions**
+  - Planifier et gérer les séances d'entraînement
+  - Suivre les présences
+  - Gérer les inscriptions
 
-- **Payment System**
-  - Secure payment processing
-  - Multiple payment methods support
-  - Payment history tracking
+- **Système de Paiement**
+  - Traitement sécurisé des paiements
+  - Support de plusieurs méthodes de paiement
+  - Suivi de l'historique des paiements
 
-- **Document Management**
-  - Upload and manage medical certificates
-  - Store important documents
-  - Track document status
+- **Gestion des Documents**
+  - Télécharger et gérer les certificats médicaux
+  - Stocker les documents importants
+  - Suivre le statut des documents
 
-## Technology Stack
+## Stack Technologique
 
 - **Backend**
   - ASP.NET Core 7.0
   - Entity Framework Core
-  - SQL Server Database
-  - Identity Framework for Authentication
+  - Base de données SQL Server
+  - Identity Framework pour l'authentification
 
 - **Frontend**
-  - Razor Views
+  - Vues Razor
   - Bootstrap 5
   - jQuery
-  - Modern responsive design
+  - Design responsive moderne
 
-## Getting Started
+## Pour Commencer
 
-1. **Prerequisites**
-   - .NET 7.0 SDK
+1. **Prérequis**
+   - SDK .NET 7.0
    - SQL Server
-   - Visual Studio 2022 or VS Code
+   - Visual Studio 2022 ou VS Code
 
 2. **Installation**
    ```bash
-   # Clone the repository
+   # Cloner le dépôt
    git clone https://github.com/asmaabrs97/SportSync.git
 
-   # Navigate to project directory
+   # Naviguer vers le répertoire du projet
    cd SportSync
 
-   # Restore packages
+   # Restaurer les packages
    dotnet restore
 
-   # Update database
+   # Mettre à jour la base de données
    dotnet ef database update
 
-   # Run the application
+   # Lancer l'application
    dotnet run
    ```
 
 3. **Configuration**
-   - Update the connection string in `appsettings.json`
-   - Configure any additional settings in `appsettings.json`
+   - Mettre à jour la chaîne de connexion dans `appsettings.json`
+   - Configurer les paramètres supplémentaires dans `appsettings.json`
 
-## Project Structure
+## Structure du Projet
 
-- `Controllers/` - Application controllers
-- `Models/` - Data models and view models
-- `Views/` - Razor views and layouts
-- `Services/` - Business logic and services
-- `Data/` - Database context and repositories
-- `wwwroot/` - Static files (CSS, JS, images)
+- `Controllers/` - Contrôleurs de l'application
+- `Models/` - Modèles de données et modèles de vue
+- `Views/` - Vues Razor et layouts
+- `Services/` - Logique métier et services
+- `Data/` - Contexte de base de données et repositories
+- `wwwroot/` - Fichiers statiques (CSS, JS, images)
 
-## Features in Development
+## Fonctionnalités en Développement
 
-- Advanced search functionality
-- Real-time notifications
-- Mobile application
-- Integration with external sports APIs
-- Performance analytics dashboard
+- Fonctionnalité de recherche avancée
+- Notifications en temps réel
+- Application mobile
+- Intégration avec des API sportives externes
+- Tableau de bord d'analyse des performances
 
-## Contributing
+## Contribuer
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Forker le dépôt
+2. Créer votre branche de fonctionnalité (`git checkout -b feature/NouvellefonctionnalitéIncroyable`)
+3. Commiter vos changements (`git commit -m 'Ajout d'une nouvelle fonctionnalité incroyable'`)
+4. Pousser vers la branche (`git push origin feature/NouvellefonctionnalitéIncroyable`)
+5. Ouvrir une Pull Request
 
-## License
+## Licence
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## Contact
 
-Project Link: [https://github.com/asmaabrs97/SportSync](https://github.com/asmaabrs97/SportSync)
+Lien du Projet : [https://github.com/asmaabrs97/SportSync](https://github.com/asmaabrs97/SportSync)
