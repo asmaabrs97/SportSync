@@ -1,1 +1,173 @@
+@{
+    ViewData["Title"] = "ADMIN DASHBOARD";
+}
 
+<div class="admin-dashboard">
+    <div class="admin-header">
+        <h1 class="admin-title">ADMIN CONTROL PANEL</h1>
+        <div class="admin-status">
+            <span class="admin-badge">Administrator</span>
+            <span class="admin-online">Online</span>
+        </div>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="admin-stats-grid">
+            <div class="stat-card">
+                <h3>Total Members</h3>
+                <div class="stat-value">7,656</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Revenue</h3>
+                <div class="stat-value">$5,210.27</div>
+                <div class="stat-label">This Month</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>New Registrations</h3>
+                <div class="stat-value">156</div>
+                <div class="stat-label">Last 7 Days</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Active Sports</h3>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
+
+        <div class="admin-panels">
+            <div class="admin-panel">
+                <h3>Recent Activities</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <span class="activity-time">10:30 AM</span>
+                        <span class="activity-desc">New member registration</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">11:15 AM</span>
+                        <span class="activity-desc">Payment received</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">12:00 PM</span>
+                        <span class="activity-desc">Document verification</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-panel">
+                <h3>System Status</h3>
+                <div class="status-list">
+                    <div class="status-item">
+                        <span class="status-label">Server Status</span>
+                        <span class="status-value online">Online</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Database</span>
+                        <span class="status-value operational">Operational</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Last Backup</span>
+                        <span class="status-value">2 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .admin-dashboard {
+            padding: 20px;
+            background: #1a1a2e;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .admin-title {
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .admin-badge {
+            background: #ff4655;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+
+        .admin-online {
+            color: #4caf50;
+        }
+
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2em;
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .admin-panels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .admin-panel {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .activity-item, .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .activity-time {
+            color: #888;
+        }
+
+        .status-value.online {
+            color: #4caf50;
+        }
+
+        .status-value.operational {
+            color: #2196f3;
+        }
+    </style>
+}

@@ -1,1 +1,246 @@
+@model SportSync.Models.User
 
+@{
+    ViewData["Title"] = "MEMBER DASHBOARD";
+}
+
+<div class="member-dashboard">
+    <div class="member-header">
+        <div class="member-profile">
+            <div class="profile-image">
+                <img src="~/images/default-avatar.png" alt="Member Profile" />
+            </div>
+            <div class="member-info">
+                <h2>Welcome, @(Model?.FirstName ?? "Member")!</h2>
+                <div class="member-status">
+                    <span class="member-badge">Active Member</span>
+                    <span class="membership-type">Premium</span>
+                </div>
+                <div class="member-details">
+                    <span class="member-name">@Model?.FirstName @Model?.LastName</span>
+                    <span class="member-email">@Model?.Email</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="member-stats">
+            <div class="stat-box">
+                <h3>MY PROGRESS</h3>
+                <div class="progress-circle">
+                    <span class="progress-value">75%</span>
+                </div>
+                <p>Overall Completion</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>NEXT SESSION</h3>
+                <div class="next-session">
+                    <i class="fas fa-calendar"></i>
+                    <span>Today, 3:00 PM</span>
+                </div>
+                <p>Swimming Training</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>ACHIEVEMENTS</h3>
+                <div class="achievements">
+                    <span class="badge">🏅 Level 5</span>
+                    <span class="points">1250 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-activities">
+            <div class="activity-panel">
+                <h3>MY SCHEDULE</h3>
+                <div class="schedule-list">
+                    <div class="schedule-item">
+                        <div class="time">09:00 AM</div>
+                        <div class="activity">
+                            <span class="activity-name">Yoga Class</span>
+                            <span class="activity-status">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="time">02:00 PM</div>
+                        <div class="activity">
+                            <span class="activity-name">Fitness Training</span>
+                            <span class="activity-status">Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-panel">
+                <h3>RECENT ACTIVITIES</h3>
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <span class="activity-icon">🏊‍♂️</span>
+                        <div class="activity-details">
+                            <span class="activity-title">Swimming Session</span>
+                            <span class="activity-time">Yesterday</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-icon">🏋️‍♂️</span>
+                        <div class="activity-details">
+                            <span class="activity-title">Gym Workout</span>
+                            <span class="activity-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .member-dashboard {
+            padding: 20px;
+            background: #1a1a2e;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .member-header {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .member-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-image img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #4CAF50;
+        }
+
+        .member-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .membership-type {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .member-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(#4CAF50 75%, #2c3e50 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto;
+        }
+
+        .progress-circle::before {
+            content: "";
+            width: 80px;
+            height: 80px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .progress-value {
+            position: relative;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .member-activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .activity-panel {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .schedule-item, .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .time {
+            min-width: 100px;
+            color: #888;
+        }
+
+        .activity {
+            display: flex;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .activity-status {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .activity-status:contains("Upcoming") {
+            background: #2196F3;
+            color: white;
+        }
+
+        .activity-status:contains("Confirmed") {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .activity-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        .activity-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-time {
+            font-size: 0.8em;
+            color: #888;
+        }
+    </style>
+}

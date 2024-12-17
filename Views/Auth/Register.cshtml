@@ -1,97 +1,37 @@
-@model SportSync.Models.ViewModels.RegistrationViewModel
+@model SportSync.Models.ViewModels.RegistrationStepsViewModel
 @{
     ViewData["Title"] = "Create Your Account";
 }
 
 <div class="auth-container">
     <div class="auth-form">
-        <h1>CREATE YOUR ACCOUNT</h1>
-        
-        <form asp-action="Register" asp-controller="Auth" method="post">
-            <div class="form-group">
-                <label asp-for="FullName">Full Name:</label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+        <div class="steps-indicator">
+            <div class="step @(Model.CurrentStep == 1 ? "active" : "")">
+                <span class="step-number">1</span>
+                <span class="step-title">Authentication</span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Email">Email Address:</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+            <div class="step @(Model.CurrentStep == 2 ? "active" : "")">
+                <span class="step-number">2</span>
+                <span class="step-title">Medical Situation</span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Username">Username:</label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
+            <div class="step @(Model.CurrentStep == 3 ? "active" : "")">
+                <span class="step-number">3</span>
+                <span class="step-title">Documents</span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Password">Password:</label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ConfirmPassword">Confirm Password:</label>
-                <input asp-for="ConfirmPassword" type="password" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="DateOfBirth">Date of Birth:</label>
-                <input asp-for="DateOfBirth" type="date" class="form-control" placeholder="DD/MM/YY" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PhoneNumber">Phone Number:</label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Gender">Gender:</label>
-                <div class="gender-options">
-                    <label>
-                        <input type="radio" asp-for="Gender" value="Male" /> Male
-                    </label>
-                    <label>
-                        <input type="radio" asp-for="Gender" value="Female" /> Female
-                    </label>
-                </div>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-
-            <div class="form-group checkbox-group">
-                <label>
-                    <input asp-for="IsOver14" type="checkbox" />
-                    I am 14 years or older
-                </label>
-                <span asp-validation-for="IsOver14" class="text-danger"></span>
-            </div>
-
-            <div class="form-group checkbox-group">
-                <label>
-                    <input asp-for="AcceptTerms" type="checkbox" />
-                    I agree to the Terms of Service and Privacy Policy
-                </label>
-                <span asp-validation-for="AcceptTerms" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary">CREATE ACCOUNT</button>
-        </form>
-
-        <div class="social-login">
-            <button class="google-login">
-                <img src="~/images/google-icon.png" alt="Google" />
-                Sign up with Google
-            </button>
-            <button class="apple-login">
-                <img src="~/images/apple-icon.png" alt="Apple" />
-                Sign up with Apple
-            </button>
         </div>
+
+        @if (Model.CurrentStep == 1)
+        {
+            <partial name="_AuthenticationStep" model="Model.Authentication" />
+        }
+        else if (Model.CurrentStep == 2)
+        {
+            <partial name="_MedicalStep" model="Model.MedicalInfo" />
+        }
+        else
+        {
+            <partial name="_DocumentsStep" model="Model.Documents" />
+        }
     </div>
 </div>
 
@@ -105,114 +45,132 @@
         justify-content: center;
         align-items: center;
         padding: 2rem;
-        color: white;
     }
 
     .auth-form {
-        background: rgba(40, 40, 40, 0.9);
+        background: rgba(255, 255, 255, 0.05);
         padding: 2rem;
-        border-radius: 10px;
+        border-radius: 15px;
         width: 100%;
-        max-width: 500px;
+        max-width: 600px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     }
 
-    .auth-form h1 {
-        text-align: center;
+    .steps-indicator {
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 2rem;
-        color: #e85d04;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #666;
+    }
+
+    .step.active {
+        color: #4a90e2;
+    }
+
+    .step-number {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
         font-weight: bold;
+    }
+
+    .step.active .step-number {
+        background: #4a90e2;
+        color: white;
+    }
+
+    .step-title {
+        font-size: 0.9rem;
+        text-align: center;
     }
 
     .form-group {
         margin-bottom: 1.5rem;
     }
 
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #fff;
+    }
+
     .form-control {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
-        padding: 0.75rem;
-        border-radius: 5px;
         width: 100%;
+        padding: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
     }
 
     .form-control:focus {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: #e85d04;
+        border-color: #4a90e2;
         outline: none;
-    }
-
-    .gender-options {
-        display: flex;
-        gap: 2rem;
-    }
-
-    .checkbox-group {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.25);
     }
 
     .btn-primary {
-        background-color: #e85d04;
-        border: none;
-        padding: 1rem;
         width: 100%;
-        border-radius: 5px;
-        color: white;
-        font-weight: bold;
-        margin-top: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
+        padding: 0.75rem;
+        background: #4a90e2;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        transition: background-color 0.2s;
     }
 
     .btn-primary:hover {
-        background-color: #dc2f02;
-    }
-
-    .social-login {
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .social-login button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding: 0.75rem;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        transition: opacity 0.3s;
-    }
-
-    .social-login button:hover {
-        opacity: 0.9;
-    }
-
-    .google-login {
-        background-color: white;
-        color: black;
-    }
-
-    .apple-login {
-        background-color: black;
-        color: white;
-    }
-
-    .social-login img {
-        width: 24px;
-        height: 24px;
+        background: #357abd;
     }
 
     .text-danger {
         color: #ff4444;
         font-size: 0.875rem;
         margin-top: 0.25rem;
+    }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+
+    .checkbox-group label {
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    .file-upload {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .file-upload:hover {
+        border-color: #4a90e2;
+        cursor: pointer;
     }
 </style>
 

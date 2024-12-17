@@ -1,71 +1,104 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace SportSync.Models.ViewModels
 {
     public class RegistrationViewModel
     {
-        [Required(ErrorMessage = "Full Name is required")]
+        [Required]
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email Address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Username is required")]
+        [Required]
+        [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters long")]
+        [Required]
+        [StringLength(100, MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Password confirmation is required")]
-        [Compare("Password", ErrorMessage = "Passwords do not match")]
+        [Required]
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "Date of birth is required")]
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Phone number is required")]
-        [Phone(ErrorMessage = "Invalid phone number")]
+        [Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Gender is required")]
+        [Required]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "You must be 14 years or older")]
+        [Required]
+        [Display(Name = "I am 14 years or older")]
         public bool IsOver14 { get; set; }
 
-        [Required(ErrorMessage = "You must accept the terms of service")]
+        [Required]
+        [Display(Name = "I agree to the Terms of Service and Privacy Policy")]
         public bool AcceptTerms { get; set; }
     }
 
     public class MedicalInfoViewModel
     {
+        [Display(Name = "Medical Conditions")]
         public string MedicalConditions { get; set; }
+
+        [Display(Name = "Allergies")]
         public string Allergies { get; set; }
+
+        [Display(Name = "Dietary Restrictions")]
         public string DietaryRestrictions { get; set; }
-        
-        [Required(ErrorMessage = "Emergency contact name is required")]
+
+        [Required]
+        [Display(Name = "Emergency Contact Name")]
         public string EmergencyContactName { get; set; }
-        
-        [Required(ErrorMessage = "Emergency contact phone is required")]
-        [Phone(ErrorMessage = "Invalid phone number")]
+
+        [Required]
+        [Phone]
+        [Display(Name = "Emergency Contact Phone")]
         public string EmergencyContactPhone { get; set; }
-        
+
+        [Display(Name = "Additional Notes")]
         public string AdditionalNotes { get; set; }
     }
 
     public class DocumentsViewModel
     {
-        [Required(ErrorMessage = "Proof of identity is required")]
+        [Required]
+        [Display(Name = "Proof of Identity")]
         public IFormFile ProofOfIdentity { get; set; }
 
-        [Required(ErrorMessage = "Medical certificate is required")]
+        [Required]
+        [Display(Name = "Medical Certificate")]
         public IFormFile MedicalCertificate { get; set; }
 
+        [Required]
+        [Display(Name = "Insurance Certificate")]
         public IFormFile InsuranceCertificate { get; set; }
 
-        [Required(ErrorMessage = "Liability waiver form is required")]
+        [Required]
+        [Display(Name = "Liability Waiver Form")]
         public IFormFile LiabilityWaiverForm { get; set; }
+    }
+
+    public class RegistrationStepsViewModel
+    {
+        public RegistrationViewModel Authentication { get; set; }
+        public MedicalInfoViewModel MedicalInfo { get; set; }
+        public DocumentsViewModel Documents { get; set; }
+        public int CurrentStep { get; set; }
     }
 }
