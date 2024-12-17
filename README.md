@@ -32,7 +32,7 @@ SportSync est une application web moderne construite avec ASP.NET Core qui aide 
 ## Stack Technologique
 
 - **Backend**
-  - ASP.NET Core 7.0
+  - ASP.NET Core 8.0
   - Entity Framework Core
   - Base de données SQL Server
   - Identity Framework pour l'authentification
@@ -46,7 +46,7 @@ SportSync est une application web moderne construite avec ASP.NET Core qui aide 
 ## Pour Commencer
 
 1. **Prérequis**
-   - SDK .NET 7.0
+   - SDK .NET 8.0
    - SQL Server
    - Visual Studio 2022 ou VS Code
 
