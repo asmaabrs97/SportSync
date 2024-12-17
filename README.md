@@ -15,7 +15,7 @@ SportSync est une application web moderne construite avec ASP.NET Core qui aide 
   - Filtrer les sports par type, niveau et exigences techniques
 
 - **Gestion des Sessions**
-  - Planifier et gérer les séances d'entraînement
+  - Planifier et gérer les séances d'entraînment
   - Suivre les présences
   - Gérer les inscriptions
 
@@ -29,57 +29,70 @@ SportSync est une application web moderne construite avec ASP.NET Core qui aide 
   - Stocker les documents importants
   - Suivre le statut des documents
 
-## Stack Technologique
+# SportSync 
 
-- **Backend**
-  - ASP.NET Core 7.0
-  - Entity Framework Core
-  - Base de données SQL Server
-  - Identity Framework pour l'authentification
+## Prérequis 
+- **Visual Studio 2022** ou plus récent
+- **.NET 8.0 SDK** ([Télécharger](https://dotnet.microsoft.com/download/dotnet/8.0))
+- **SQL Server Express** ou supérieur ([Télécharger](https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads))
 
-- **Frontend**
-  - Vues Razor
-  - Bootstrap 5
-  - jQuery
-  - Design responsive moderne
+---
 
-## Pour Commencer
+## Installation 
 
-1. **Prérequis**
-   - SDK .NET 7.0
-   - SQL Server
-   - Visual Studio 2022 ou VS Code
+### 1. Cloner le projet
+```bash
+# Cloner le dépôt
+git clone https://github.com/asmaabrs97/SportSync.git
+cd SportSync
+```
 
-2. **Installation**
-   ```bash
-   # Cloner le dépôt
-   git clone https://github.com/asmaabrs97/SportSync.git
+### 2. Résolution des erreurs courantes
+En cas d'erreurs lors du build, exécutez les commandes suivantes dans l'ordre :
+```bash
+dotnet clean
+rm -r bin/ obj/
+```
 
-   # Naviguer vers le répertoire du projet
-   cd SportSync
+### 3. Installation des packages
+Ajoutez les dépendances nécessaires avec les commandes suivantes :
+```bash
+dotnet add package Microsoft.EntityFrameworkCore
 
-   # Restaurer les packages
-   dotnet restore
+# ORM Entity Framework Core pour SQL Server
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
-   # Mettre à jour la base de données
-   dotnet ef database update
+dotnet add package Microsoft.EntityFrameworkCore.Tools
 
-   # Lancer l'application
-   dotnet run
-   ```
+dotnet add package Microsoft.EntityFrameworkCore.Design
 
-3. **Configuration**
-   - Mettre à jour la chaîne de connexion dans `appsettings.json`
-   - Configurer les paramètres supplémentaires dans `appsettings.json`
+# Authentification
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
 
-## Structure du Projet
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 
-- `Controllers/` - Contrôleurs de l'application
-- `Models/` - Modèles de données et modèles de vue
-- `Views/` - Vues Razor et layouts
-- `Services/` - Logique métier et services
-- `Data/` - Contexte de base de données et repositories
-- `wwwroot/` - Fichiers statiques (CSS, JS, images)
+dotnet add package Microsoft.AspNetCore.Identity.UI
+
+# Documentation API
+dotnet add package Swashbuckle.AspNetCore
+
+# Paiements et autres outils
+dotnet add package Stripe.net
+dotnet add package SendGrid
+dotnet add package AutoMapper
+dotnet add package Newtonsoft.Json
+```
+
+### 4. Lancer le projet
+Restaurez, compilez et lancez l'application :
+```bash
+dotnet restore
+dotnet build
+dotnet run
+```
+L'application sera disponible à l'adresse **http://localhost:5000** (par défaut).
+
+---
 
 ## Comptes de test
 
@@ -102,26 +115,51 @@ Ces comptes sont créés automatiquement lors du premier démarrage de l'applica
 2. Exécuté les migrations (`dotnet ef database update`)
 3. Lancé l'application (`dotnet run`)
 
-## Fonctionnalités en Développement
+---
 
-- Fonctionnalité de recherche avancée
+## Fonctionnalités principales 
+- **Authentification des utilisateurs**
+- **Gestion des activités sportives**
+- **Système de réservation**
+- **Gestion des paiements**
+- **Interface administrateur**
+
+---
+
+## Structure du projet 
+```plaintext
+SportSync/
+├── Controllers/       # Contrôleurs pour l'application
+├── Models/            # Modèles de données
+├── Views/             # Vues Razor pour le frontend
+├── Services/          # Logique métier et services
+├── Data/              # Configuration de la base de données
+└── wwwroot/           # Contenus statiques (CSS, JS, images)
+```
+
+---
+
+## Stack technique 
+- **Backend** : ASP.NET Core 8.0
+- **ORM** : Entity Framework Core
+- **BDD** : SQL Server
+- **Frontend** : Razor + Bootstrap 5
+
+---
+
+## En développement 
 - Notifications en temps réel
 - Application mobile
-- Intégration avec des API sportives externes
-- Tableau de bord d'analyse des performances
+- Intégration d'API externes
+- Dashboard analytique
 
-## Contribuer
+---
 
-1. Forker le dépôt
-2. Créer votre branche de fonctionnalité (`git checkout -b feature/NouvellefonctionnalitéIncroyable`)
-3. Commiter vos changements (`git commit -m 'Ajout d'une nouvelle fonctionnalité incroyable'`)
-4. Pousser vers la branche (`git push origin feature/NouvellefonctionnalitéIncroyable`)
-5. Ouvrir une Pull Request
+## Contact 
+Pour toute question ou assistance :
+-   [https://github.com/asmaabrs97]
 
-## Licence
+---
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
-## Contact
-
-Lien du Projet : [https://github.com/asmaabrs97/SportSync](https://github.com/asmaabrs97/SportSync)
+## Licence 
+Ce projet est sous licence **MIT License**. Voir [LICENSE](./LICENSE) pour plus d'informations.
