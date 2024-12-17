@@ -61,8 +61,9 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var dbInitializer = services.GetRequiredService<DbInitializer>();
-        dbInitializer.Initialize().Wait();
+        var userManager = services.GetRequiredService<UserManager<User>>();
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        await DbSeeder.SeedUsers(userManager, roleManager);
     }
     catch (Exception ex)
     {

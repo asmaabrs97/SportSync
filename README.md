@@ -81,6 +81,27 @@ SportSync est une application web moderne construite avec ASP.NET Core qui aide 
 - `Data/` - Contexte de base de données et repositories
 - `wwwroot/` - Fichiers statiques (CSS, JS, images)
 
+## Comptes de test
+
+L'application crée automatiquement deux comptes pour les tests lors du premier démarrage :
+
+### Compte Administrateur
+- Email : admin@sportsync.com
+- Mot de passe : Admin123!
+- Rôle : Admin
+- Accès : Dashboard administrateur, gestion des utilisateurs, gestion des sports, etc.
+
+### Compte Utilisateur Test
+- Email : aya.dyr@example.com
+- Mot de passe : Test123!
+- Rôle : User
+- Accès : Inscription aux sports, gestion du profil, paiements, etc.
+
+Ces comptes sont créés automatiquement lors du premier démarrage de l'application. Vous pouvez les utiliser immédiatement après avoir :
+1. Cloné le projet
+2. Exécuté les migrations (`dotnet ef database update`)
+3. Lancé l'application (`dotnet run`)
+
 ## Fonctionnalités en Développement
 
 - Fonctionnalité de recherche avancée
