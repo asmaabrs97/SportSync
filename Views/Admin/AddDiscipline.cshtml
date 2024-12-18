@@ -1,0 +1,66 @@
+@model SportSync.Models.ViewModels.SportViewModel
+@{
+    ViewData["Title"] = "Add New Discipline";
+}
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add New Discipline</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddDiscipline" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="3" required></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Requirements">Requirements</label>
+                    <textarea asp-for="Requirements" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Requirements" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Schedule">Schedule</label>
+                    <input asp-for="Schedule" class="form-control" required />
+                    <span asp-validation-for="Schedule" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Image">Image</label>
+                    <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PricePerMonth">Price Per Month</label>
+                    <input asp-for="PricePerMonth" class="form-control" type="number" step="0.01" required />
+                    <span asp-validation-for="PricePerMonth" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MaxParticipants">Maximum Participants</label>
+                    <input asp-for="MaxParticipants" class="form-control" type="number" required />
+                    <span asp-validation-for="MaxParticipants" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <a asp-action="Dashboard" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Create Discipline</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,132 @@
+@using Microsoft.AspNetCore.Http
+
+@{
+    var userRole = Context.Session.GetString("UserRole");
+    var isLoggedIn = !string.IsNullOrEmpty(userRole);
+    var isAdmin = userRole == "Admin";
+}
+
+<div class="sidebar @(isLoggedIn ? "show" : "")">
+    <div class="sidebar-content">
+        @if (isLoggedIn)
+        {
+            <div class="user-info">
+                <div class="profile-image">
+                    <img src="~/images/default-avatar.png" alt="Profile" />
+                </div>
+                <div class="user-details">
+                    <h4>@Context.Session.GetString("UserEmail")</h4>
+                    <span class="role-badge">@(isAdmin ? "Admin" : "Member")</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                @if (isAdmin)
+                {
+                    <a href="@Url.Action("Dashboard", "Admin")" class="nav-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Admin Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-users"></i>
+                        Manage Users
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-chart-bar"></i>
+                        Statistics
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Dashboard", "User")" class="nav-item">
+                        <i class="fas fa-user"></i>
+                        My Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-calendar"></i>
+                        My Schedule
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-trophy"></i>
+                        My Progress
+                    </a>
+                }
+            </nav>
+        }
+    </div>
+</div>
+
+<style>
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background: #1a1a2e;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding-top: 60px;
+}
+
+.sidebar.show {
+    left: 0;
+}
+
+.sidebar-content {
+    padding: 1rem;
+}
+
+.user-info {
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.user-details h4 {
+    color: white;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.sidebar-nav {
+    margin-top: 1rem;
+}
+
+.nav-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-item i {
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+</style>

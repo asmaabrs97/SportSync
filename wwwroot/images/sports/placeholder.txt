@@ -1,0 +1,9 @@
+Add sport images here:
+- football.jpg
+- basketball.jpg
+- handball.jpg
+- ski.jpg
+- volleyball.jpg
+- baseball.jpg
+- cricket.jpg
+- waterpolo.jpg

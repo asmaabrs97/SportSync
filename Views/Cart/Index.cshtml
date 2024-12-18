@@ -1,0 +1,156 @@
+@model List<SportSync.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="cart-container">
+    <h1>Shopping Cart</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="empty-cart">
+            <p>Your cart is empty</p>
+            <a asp-controller="Disciplines" asp-action="Index" class="btn-primary">Browse Sessions</a>
+        </div>
+    }
+    else
+    {
+        <div class="cart-items">
+            @foreach (var item in Model)
+            {
+                <div class="cart-item">
+                    <div class="item-info">
+                        <h3>@item.Discipline</h3>
+                        <p>@item.Session</p>
+                    </div>
+                    <div class="item-price">
+                        @item.Price.ToString("C")
+                    </div>
+                    <div class="item-actions">
+                        <a asp-action="RemoveFromCart" asp-route-id="@item.Id" class="btn-remove">Remove</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-item">
+                <span>Total:</span>
+                <span class="total-price">@Model.Sum(i => i.Price).ToString("C")</span>
+            </div>
+            <a asp-action="Checkout" class="btn-checkout">Proceed to Checkout</a>
+        </div>
+    }
+</div>
+
+<style>
+    .cart-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #1a1a1a;
+        border-radius: 10px;
+        color: white;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #e85d04;
+    }
+
+    .empty-cart {
+        text-align: center;
+        padding: 3rem;
+    }
+
+    .cart-items {
+        margin-bottom: 2rem;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .item-info h3 {
+        margin: 0;
+        color: #e85d04;
+    }
+
+    .item-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .btn-remove {
+        color: #ff4444;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 1px solid #ff4444;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+
+    .btn-remove:hover {
+        background: #ff4444;
+        color: white;
+    }
+
+    .cart-summary {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .total-price {
+        font-weight: bold;
+        color: #e85d04;
+    }
+
+    .btn-checkout {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background: #e85d04;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s;
+    }
+
+    .btn-checkout:hover {
+        background: #dc2f02;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #e85d04;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+        transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: #dc2f02;
+    }
+</style>

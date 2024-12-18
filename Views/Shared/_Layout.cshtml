@@ -1,0 +1,225 @@
+@using SportSync.Extensions
+@using SportSync.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SportSync</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SportSync.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
+    <style>
+        body.dark-theme {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+        }
+
+        .search-box {
+            max-width: 300px;
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .search-box input {
+            background-color: #333;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 20px;
+            padding: 8px 15px 8px 35px;
+            width: 100%;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            background-color: #444;
+            border-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .search-box::before {
+            content: '\f002';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .search-box input::placeholder {
+            color: #888;
+            opacity: 1;
+        }
+
+        .nav-link {
+            color: white !important;
+            margin: 0 0.5rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            padding: 0.5rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .social-links img {
+            height: 24px;
+            width: 24px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links img:hover {
+            opacity: 1;
+        }
+
+        .social-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Main content wrapper */
+        .content-wrapper {
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+            min-height: calc(100vh - 60px);
+            padding-bottom: 3rem;
+        }
+
+        .content-wrapper.sidebar-open {
+            margin-left: 250px;
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 768px) {
+            .content-wrapper.sidebar-open {
+                margin-left: 0;
+            }
+        }
+
+        .cart-count {
+            background: #e85d04;
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            position: relative;
+            top: -8px;
+            left: -5px;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" alt="SportSync" height="40" />
+                </a>
+                <div class="search-box d-none d-sm-block">
+                    <input type="text" class="form-control" placeholder="Search sports, teams, events..." />
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Disciplines">DISCIPLINES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TEAMS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Events" asp-action="Index">EVENTS</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Cart" asp-action="Index">
+                                <i class="fas fa-shopping-cart"></i>
+                                @{
+                                    var cartItems = Context.Session.Get<List<CartItem>>("CartItems");
+                                    var itemCount = cartItems?.Count ?? 0;
+                                }
+                                <span class="cart-count">@itemCount</span>
+                            </a>
+                        </li>
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <partial name="_SidebarPartial" />
+
+    <div class="content-wrapper">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+        </div>
+    </footer>
+
+    <div class="social-links">
+        <span class="social-text">FOLLOW US ON</span>
+        <a href="#" class="ms-2"><img src="~/images/social/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="~/images/social/instagram.png" alt="Instagram" /></a>
+        <a href="#"><img src="~/images/social/twitter.png" alt="Twitter" /></a>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Handle sidebar toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const userRole = '@Context.Session.GetString("UserRole")';
+            if (userRole) {
+                document.querySelector('.content-wrapper').classList.add('sidebar-open');
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

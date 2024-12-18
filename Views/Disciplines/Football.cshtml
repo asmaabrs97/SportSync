@@ -1,0 +1,204 @@
+@{
+    ViewData["Title"] = "Football";
+}
+
+<div class="discipline-detail">
+    <!-- Hero Section -->
+    <div class="hero-section" style="background-image: url('/images/sports/football.jpg');">
+        <div class="hero-content">
+            <h1 class="discipline-title">FOOTBALL</h1>
+            <p class="discipline-description">
+                Football is a team sport played between two teams of eleven players each. Players use their feet to kick a ball with the aim of scoring goals. The sport requires teamwork, strategy, and physical fitness, making it one of the world's most popular games.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary sign-up-btn">SIGN UP</a>
+                <a href="#" class="btn btn-primary sign-up-btn">SIGN UP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skill Levels Section -->
+    <div class="skill-levels">
+        <div class="level-card beginner">
+            <h3>BEGINNER</h3>
+            <p>Perfect for newcomers. Learn basic ball control, passing, and game rules. No prior experience needed.</p>
+        </div>
+        <div class="level-card intermediate">
+            <h3>INTERMEDIATE</h3>
+            <p>For players with basic skills. Focus on tactical awareness, advanced techniques, and team strategies.</p>
+        </div>
+        <div class="level-card advanced">
+            <h3>ADVANCED</h3>
+            <p>For experienced players. Master complex tactics, specialized skills, and competitive play.</p>
+        </div>
+    </div>
+
+    <!-- Upcoming Sessions Section -->
+    <div class="upcoming-sessions">
+        <h2>UPCOMING SESSIONS</h2>
+        <p class="pricing">Prices starting from €250 per season</p>
+        
+        <div class="sessions-grid">
+            <a href="@Url.Action("SessionDetails", "Disciplines", new { discipline = "Football", session = "Winter League" })" class="session-card">
+                <h3>Winter League</h3>
+                <p>Winter Session: Jan 15 - Mar 30, 2025</p>
+            </a>
+            <a href="@Url.Action("SessionDetails", "Disciplines", new { discipline = "Football", session = "Spring Championship" })" class="session-card">
+                <h3>Spring Championship</h3>
+                <p>Spring Session: Apr 1 - Jun 30, 2025</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-links">
+        <a href="#" class="social-icon facebook"><img src="/images/social/facebook.png" alt="Facebook"></a>
+        <a href="#" class="social-icon instagram"><img src="/images/social/instagram.png" alt="Instagram"></a>
+        <a href="#" class="social-icon tiktok"><img src="/images/social/twitter.png" alt="Twitter"></a>
+    </div>
+</div>
+
+<style>
+    .discipline-detail {
+        background-color: #1a1a1a;
+        color: white;
+        min-height: 100vh;
+    }
+
+    .hero-section {
+        height: 80vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+    }
+
+    .discipline-title {
+        font-size: 4rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+
+    .discipline-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .sign-up-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.2rem;
+        background-color: #e85d04;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transition: background-color 0.3s;
+    }
+
+    .sign-up-btn:hover {
+        background-color: #dc2f02;
+    }
+
+    .skill-levels {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 4rem 2rem;
+        background-color: #1a1a1a;
+    }
+
+    .level-card {
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .level-card h3 {
+        color: #e85d04;
+        margin-bottom: 1rem;
+    }
+
+    .beginner { background-color: #2b2b2b; }
+    .intermediate { background-color: #2b2b2b; }
+    .advanced { background-color: #2b2b2b; }
+
+    .upcoming-sessions {
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .pricing {
+        color: #e85d04;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .sessions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .session-card {
+        background-color: #2b2b2b;
+        padding: 2rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+
+    .session-card:hover {
+        transform: scale(1.05);
+        color: white;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2rem;
+    }
+
+    .social-icon img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s;
+    }
+
+    .social-icon:hover img {
+        transform: scale(1.2);
+    }
+
+    @@media only screen and (max-width: 768px) {
+        .skill-levels {
+            grid-template-columns: 1fr;
+        }
+
+        .discipline-title {
+            font-size: 3rem;
+        }
+
+        .hero-content {
+            padding: 1rem;
+        }
+    }
+</style>

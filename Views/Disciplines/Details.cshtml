@@ -1,0 +1,147 @@
+@model SportSync.Models.Sport
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="discipline-details">
+    <!-- Hero Section -->
+    <div class="hero-section" style="background-image: url('@Model.ImageUrl');">
+        <div class="hero-content">
+            <h1>@Model.Name</h1>
+            <p class="description">@Model.Description</p>
+        </div>
+    </div>
+
+    <!-- Requirements Section -->
+    <div class="requirements-section">
+        <h2>Requirements</h2>
+        <p>@Model.Requirements</p>
+    </div>
+
+    <!-- Schedule Section -->
+    <div class="schedule-section">
+        <h2>Schedule</h2>
+        <p>@Model.Schedule</p>
+    </div>
+
+    <!-- Upcoming Sessions Section -->
+    <div class="upcoming-sessions">
+        <h2>UPCOMING SESSIONS</h2>
+        <p class="pricing">Prices starting from €@Model.PricePerMonth per month</p>
+        
+        <div class="sessions-grid">
+            @foreach (var session in Model.Sessions)
+            {
+                <a href="@Url.Action("SessionDetails", "Disciplines", new { disciplineId = Model.Id, sessionId = session.Id })" class="session-card">
+                    <h3>@session.Name</h3>
+                    <p>@session.StartTime.ToString("MMM dd, yyyy") - @session.EndTime.ToString("MMM dd, yyyy")</p>
+                    <div class="session-details">
+                        <span class="location">@session.Location</span>
+                        <span class="spots">@(Model.MaxParticipants - (session.Registrations?.Count ?? 0)) spots left</span>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .discipline-details {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hero-section {
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .hero-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        max-width: 600px;
+    }
+
+    .requirements-section,
+    .schedule-section {
+        margin-bottom: 2rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .upcoming-sessions {
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .sessions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .session-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease;
+    }
+
+    .session-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .session-details {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .pricing {
+        color: #e85d04;
+        font-weight: bold;
+        margin: 1rem 0;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            height: 300px;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .description {
+            font-size: 1rem;
+        }
+    }
+</style>

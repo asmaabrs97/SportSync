@@ -1,0 +1,80 @@
+@model SportSync.Models.ViewModels.MedicalInfoViewModel
+
+<form asp-action="SaveMedicalInfo" asp-controller="Auth" method="post">
+    <h2>Medical Information</h2>
+
+    <div class="form-group">
+        <label asp-for="MedicalConditions">Medical Conditions:</label>
+        <textarea asp-for="MedicalConditions" class="form-control" rows="3" placeholder="List any medical conditions we should be aware of"></textarea>
+        <span asp-validation-for="MedicalConditions" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Allergies">Allergies:</label>
+        <textarea asp-for="Allergies" class="form-control" rows="2" placeholder="List any allergies"></textarea>
+        <span asp-validation-for="Allergies" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DietaryRestrictions">Dietary Restrictions:</label>
+        <textarea asp-for="DietaryRestrictions" class="form-control" rows="2" placeholder="List any dietary restrictions"></textarea>
+        <span asp-validation-for="DietaryRestrictions" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EmergencyContactName">Emergency Contact Name:</label>
+        <input asp-for="EmergencyContactName" class="form-control" placeholder="Full name of emergency contact" />
+        <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EmergencyContactPhone">Emergency Contact Phone:</label>
+        <input asp-for="EmergencyContactPhone" class="form-control" placeholder="Emergency contact phone number" />
+        <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdditionalNotes">Additional Notes:</label>
+        <textarea asp-for="AdditionalNotes" class="form-control" rows="3" placeholder="Any additional information we should know"></textarea>
+        <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-secondary" onclick="history.back()">BACK</button>
+        <button type="submit" class="btn btn-primary">CONTINUE TO DOCUMENTS</button>
+    </div>
+</form>
+
+<style>
+    h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 2rem;
+    }
+
+    textarea.form-control {
+        resize: none;
+        font-family: inherit;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0.75rem;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        transition: background-color 0.2s;
+        width: 100%;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+</style>

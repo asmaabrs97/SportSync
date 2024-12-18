@@ -1,0 +1,141 @@
+@model IEnumerable<SportSync.Models.Sport>
+@{
+    ViewData["Title"] = "Disciplines";
+}
+
+<div class="disciplines-container">
+    <h1 class="page-title">Our Disciplines</h1>
+    <p class="subtitle">Choose from our wide range of sports and activities</p>
+
+    <div class="disciplines-grid">
+        @foreach (var discipline in Model)
+        {
+            <a href="@Url.Action("Details", "Disciplines", new { id = discipline.Id })" class="discipline-card">
+                <div class="card-image" style="background-image: url('@discipline.ImageUrl');">
+                    <div class="card-overlay">
+                        <h2>@discipline.Name</h2>
+                        <p class="price">From €@discipline.PricePerMonth/month</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="description">@discipline.Description</p>
+                    <div class="card-footer">
+                        <span class="sessions-count">@(discipline.Sessions?.Count ?? 0) sessions available</span>
+                        <span class="view-more">View Details →</span>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+<style>
+    .disciplines-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 3rem;
+    }
+
+    .disciplines-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .discipline-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease;
+    }
+
+    .discipline-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+    }
+
+    .card-overlay h2 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.5rem;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #e85d04;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+
+    .description {
+        color: #666;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+
+    .sessions-count {
+        color: #666;
+    }
+
+    .view-more {
+        color: #e85d04;
+        font-weight: bold;
+    }
+
+    @@media (max-width: 768px) {
+        .disciplines-container {
+            padding: 1rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .disciplines-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

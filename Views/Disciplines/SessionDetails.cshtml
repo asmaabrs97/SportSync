@@ -1,0 +1,231 @@
+@model SportSync.Models.Session
+@{
+    ViewData["Title"] = $"{Model.Name} - {Model.Sport.Name}";
+}
+
+<div class="session-details">
+    <!-- Hero Section -->
+    <div class="hero-section" style="background-image: url('@Model.Sport.ImageUrl');">
+        <div class="hero-content">
+            <h1 class="session-title">@Model.Name</h1>
+            <div class="session-info">
+                <div class="info-item">
+                    <span class="label">Start Date:</span>
+                    <span class="value">@Model.StartTime.ToString("MMMM d, yyyy")</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">End Date:</span>
+                    <span class="value">@Model.EndTime.ToString("MMMM d, yyyy")</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Available Spots:</span>
+                    <span class="value">@(Model.Sport.MaxParticipants - (Model.Registrations?.Count ?? 0))</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Location:</span>
+                    <span class="value">@Model.Location</span>
+                </div>
+            </div>
+            <div class="price-tag">€@Model.Sport.PricePerMonth/M</div>
+            <div class="action-buttons">
+                <a asp-controller="Auth" asp-action="Register" class="sign-up-btn">SIGN UP SESSION</a>
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-disciplineId="@Model.SportId" asp-route-sessionId="@Model.Id" class="add-cart-btn">ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coach Section -->
+    <div class="coach-section">
+        <h2>Your Coach</h2>
+        <div class="coach-info">
+            <img src="@(Model.Coach.User.ProfilePictureUrl ?? "/images/default-avatar.png")" alt="Coach" class="coach-image">
+            <div class="coach-details">
+                <h3>@Model.Coach.User.FirstName @Model.Coach.User.LastName</h3>
+                <p>@Model.Coach.Specialization</p>
+                <p class="coach-bio">@Model.Coach.Biography</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Details -->
+    <div class="details-section">
+        <h2>Session Details</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>Description</h3>
+                <p>@Model.Description</p>
+            </div>
+            <div class="detail-card">
+                <h3>Requirements</h3>
+                <p>@Model.Sport.Requirements</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .session-details {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .hero-section {
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .hero-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+    }
+
+    .session-title {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .session-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .value {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .price-tag {
+        display: inline-block;
+        background: #e85d04;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .sign-up-btn,
+    .add-cart-btn {
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+    }
+
+    .sign-up-btn {
+        background: #e85d04;
+        color: white;
+    }
+
+    .add-cart-btn {
+        background: white;
+        color: #e85d04;
+    }
+
+    .sign-up-btn:hover,
+    .add-cart-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .coach-section,
+    .details-section {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .coach-info {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .coach-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .coach-details h3 {
+        margin: 0 0 0.5rem 0;
+    }
+
+    .coach-bio {
+        margin-top: 1rem;
+        color: #666;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .detail-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .detail-card h3 {
+        margin: 0 0 1rem 0;
+        color: #333;
+    }
+
+    .detail-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            height: 400px;
+        }
+
+        .session-title {
+            font-size: 2rem;
+        }
+
+        .coach-info {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+    }
+</style>

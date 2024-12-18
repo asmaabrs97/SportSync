@@ -1,0 +1,133 @@
+@model SportSync.Models.ViewModels.DocumentsViewModel
+
+<form asp-action="SaveDocuments" asp-controller="Auth" method="post" enctype="multipart/form-data" novalidate>
+    <h2>Optional Documents</h2>
+    <p class="text-center text-light mb-4">You can upload any of the following documents now, or add them later from your profile</p>
+
+    <div class="form-group">
+        <label asp-for="ProofOfIdentity">Proof of Identity (Optional):</label>
+        <div class="file-upload" onclick="document.getElementById('proofOfIdentity').click()">
+            <i class="fas fa-id-card"></i>
+            <p>Click to upload Passport or ID card</p>
+            <input type="file" id="proofOfIdentity" name="ProofOfIdentity" class="d-none" accept=".pdf,.jpg,.jpeg,.png" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MedicalCertificate">Medical Certificate (Optional):</label>
+        <div class="file-upload" onclick="document.getElementById('medicalCertificate').click()">
+            <i class="fas fa-file-medical"></i>
+            <p>Click to upload Medical Certificate</p>
+            <input type="file" id="medicalCertificate" name="MedicalCertificate" class="d-none" accept=".pdf,.jpg,.jpeg,.png" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InsuranceCertificate">Insurance Certificate (Optional):</label>
+        <div class="file-upload" onclick="document.getElementById('insuranceCertificate').click()">
+            <i class="fas fa-shield-alt"></i>
+            <p>Click to upload Insurance Certificate</p>
+            <input type="file" id="insuranceCertificate" name="InsuranceCertificate" class="d-none" accept=".pdf,.jpg,.jpeg,.png" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LiabilityWaiverForm">Liability Waiver Form (Optional):</label>
+        <div class="file-upload" onclick="document.getElementById('liabilityWaiverForm').click()">
+            <i class="fas fa-file-signature"></i>
+            <p>Click to upload signed Liability Waiver</p>
+            <input type="file" id="liabilityWaiverForm" name="LiabilityWaiverForm" class="d-none" accept=".pdf,.jpg,.jpeg,.png" />
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-secondary" onclick="history.back()">BACK</button>
+        <button type="submit" class="btn btn-primary">FINALIZE REGISTRATION</button>
+    </div>
+</form>
+
+<style>
+    h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+
+    .file-upload {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .file-upload:hover {
+        border-color: #4a90e2;
+        background: rgba(74, 144, 226, 0.1);
+    }
+
+    .file-upload i {
+        font-size: 2rem;
+        color: #4a90e2;
+        margin-bottom: 1rem;
+    }
+
+    .file-upload p {
+        color: #fff;
+        margin: 0;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0.75rem;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        transition: background-color 0.2s;
+        width: 100%;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-light {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mb-4 {
+        margin-bottom: 2rem;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function(e) {
+                const fileName = e.target.files[0]?.name;
+                if (fileName) {
+                    const uploadDiv = this.parentElement;
+                    const p = uploadDiv.querySelector('p');
+                    p.textContent = `Selected: ${fileName}`;
+                }
+            });
+        });
+    </script>
+}

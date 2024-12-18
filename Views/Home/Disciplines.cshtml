@@ -1,0 +1,200 @@
+@{
+    ViewData["Title"] = "Disciplines";
+}
+
+<div class="disciplines-container">
+    <div class="disciplines-header">
+        <h1>Our Sports Disciplines</h1>
+        <div class="filters">
+            <select class="form-select">
+                <option selected>Sport Type</option>
+                <option>Individual</option>
+                <option>Team</option>
+                <option>Water</option>
+                <option>Winter</option>
+            </select>
+            <select class="form-select">
+                <option selected>Sport Level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+            </select>
+            <select class="form-select">
+                <option selected>Skill Level</option>
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="sports-grid">
+        <a href="@Url.Action("SkiAlpin", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/ski.jpg" alt="Ski Alpin">
+            <div class="sport-info">
+                <h3>Ski Alpin</h3>
+                <p>Experience the thrill of downhill skiing in the beautiful Alps.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+        
+        <a href="@Url.Action("Football", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/football.jpg" alt="Football">
+            <div class="sport-info">
+                <h3>Football</h3>
+                <p>Join our football teams and develop your skills on the field.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+
+        <a href="@Url.Action("Basketball", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/basketball.jpg" alt="Basketball">
+            <div class="sport-info">
+                <h3>Basketball</h3>
+                <p>Master the art of basketball with our expert coaches.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+
+        <a href="@Url.Action("Handball", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/handball.jpg" alt="Handball">
+            <div class="sport-info">
+                <h3>Handball</h3>
+                <p>Join our handball teams and develop your skills on the court.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+
+        <a href="@Url.Action("Volleyball", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/volleyball.jpg" alt="Volleyball">
+            <div class="sport-info">
+                <h3>Volleyball</h3>
+                <p>Master the art of volleyball with our expert coaches.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+
+        <a href="@Url.Action("Baseball", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/baseball.jpg" alt="Baseball">
+            <div class="sport-info">
+                <h3>Baseball</h3>
+                <p>Join our baseball teams and develop your skills on the field.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+
+        <a href="@Url.Action("Cricket", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/cricket.jpg" alt="Cricket">
+            <div class="sport-info">
+                <h3>Cricket</h3>
+                <p>Master the art of cricket with our expert coaches.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+
+        <a href="@Url.Action("WaterPolo", "Disciplines")" class="sport-card">
+            <img src="/images/sports/thumbnails/waterpolo.jpg" alt="Water Polo">
+            <div class="sport-info">
+                <h3>Water Polo</h3>
+                <p>Join our water polo teams and develop your skills in the pool.</p>
+                <button class="btn btn-primary">LEARN MORE</button>
+            </div>
+        </a>
+    </div>
+</div>
+
+<style>
+    .disciplines-container {
+        padding: 2rem;
+        background-color: #1a1a1a;
+        min-height: 100vh;
+        color: white;
+    }
+
+    .disciplines-header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .disciplines-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .filters {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .form-select {
+        background-color: #2b2b2b;
+        color: white;
+        border: 1px solid #444;
+        padding: 0.5rem;
+        border-radius: 5px;
+        width: 200px;
+    }
+
+    .sports-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .sport-card {
+        background-color: #2b2b2b;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        text-decoration: none;
+        color: white;
+    }
+
+    .sport-card:hover {
+        transform: translateY(-5px);
+        color: white;
+    }
+
+    .sport-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .sport-info {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .sport-info h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    .sport-info p {
+        margin-bottom: 1rem;
+        color: #ccc;
+    }
+
+    .btn-primary {
+        background-color: #e85d04;
+        border: none;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #dc2f02;
+    }
+
+    @@media only screen and (max-width: 768px) {
+        .sports-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sport-card {
+            margin-bottom: 2rem;
+        }
+    }
+</style>
